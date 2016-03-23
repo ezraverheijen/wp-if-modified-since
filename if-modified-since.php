@@ -46,12 +46,7 @@ class If_Modified_Since {
         if ( isset( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) &&
             strtotime( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) >= $mtime )
         {
-            if ( function_exists( 'http_response_code' ) ) {
-                http_response_code( 304 );
-            } else {
-               header( $this->get_http_protocol() . ' 304 Not Modified' ); 
-            }
-
+            header( $this->get_http_protocol() . ' 304 Not Modified' );
             exit;
         }
     }
